@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f9fbfa;               /* page background */
+  --surface: #ffffff;           /* card surface */
+  --surface-alt: #f2f8f7;       /* light minty section */
+  --ink: #0f172a;               /* heading text */
+  --sub-ink: #475569;           /* subtext */
+  --muted: #94a3b8;             /* lighter text */
+  --primary: #0b8a6a;           /* mint text */
+  --accent: #e7f6f3;            /* mint background */
+  --warn-bg: #fff8e1;           /* yellow alert background */
+  --warn-ink: #a16207;          /* amber text */
+  --ok: #15803d;                /* green for completed */
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+.card {
+  background-color: var(--surface);
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,304 @@
+{
+  "name": "Sheets → Neon: Calls Sync",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "199b8326-89d5-4a9f-b256-0ad14acf908e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1AwaDbDMEkop0lYPemzTLQpY4f_QOFmRxk8n6OhsVVXs",
+          "mode": "list",
+          "cachedResultName": "Receptionist Dashboard CMS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AwaDbDMEkop0lYPemzTLQpY4f_QOFmRxk8n6OhsVVXs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1767751894,
+          "mode": "list",
+          "cachedResultName": "Calls",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AwaDbDMEkop0lYPemzTLQpY4f_QOFmRxk8n6OhsVVXs/edit#gid=1767751894"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "25378a60-1491-4939-b09a-1e7ebc6411a1",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CdN5GiKIGi10FfGM",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "calls",
+          "mode": "list",
+          "cachedResultName": "calls"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "duration_sec": "={{ $json.duration_sec }}",
+            "age": "={{ $json.age }}",
+            "id": "={{ $json.id }}",
+            "when": "={{ $json.when }}",
+            "name": "={{ $json.name }}",
+            "direction": "={{ $json.direction }}",
+            "reason": "={{ $json.reason }}",
+            "status": "={{ $json.status }}",
+            "appt_date": "={{ $json.appt_date }}",
+            "appt_time": "={{ $json.appt_time }}",
+            "clinic_id": "={{ $json.clinic_id }}",
+            "insurance": "={{ $json.insurance }}",
+            "phone": "={{ $json.phone }}",
+            "email": "={{ $json.email }}",
+            "note": "={{ $json.note }}",
+            "recording_url": "={{ $json.recording_url }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "when",
+              "displayName": "when",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "direction",
+              "displayName": "direction",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "reason",
+              "displayName": "reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "duration_sec",
+              "displayName": "duration_sec",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "age",
+              "displayName": "age",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "appt_date",
+              "displayName": "appt_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "appt_time",
+              "displayName": "appt_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "clinic_id",
+              "displayName": "clinic_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "insurance",
+              "displayName": "insurance",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "note",
+              "displayName": "note",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "recording_url",
+              "displayName": "recording_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        416,
+        0
+      ],
+      "id": "2373e9fc-cd8c-40e1-a4ba-f6c7ed5e835f",
+      "name": "Insert or update rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "P4MvEwqb8i7q4mNQ",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Insert or update rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d09ae47f-6207-4da3-a878-55f662d62d96",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bb94d622014afcf5d027fdb54d42515d8fe73fc160b7003f44dd0d754afc6e60"
+  },
+  "id": "GhxtiL0HuctHN2pQ",
+  "tags": []
+}
